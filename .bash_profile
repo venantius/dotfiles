@@ -18,8 +18,8 @@ source /usr/local/bin/virtualenvwrapper.sh
 
 alias psdb="psql -h sciencedb1-1-prod-iad.agkn.net -p 5533 -d psdb -U jarvis"
 alias akdb="psql -h sciencedb1-1-prod-iad.agkn.net -p 5433 -d akdb -U jarvis"
+alias emr="/Users/jarvis/Development/Ruby/elastic-mapreduce-cli/elastic-mapreduce"
 
-
 PATH=/usr/local/bin:/usr/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
 PATH=/usr/local/bin:/usr/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
 PATH=/usr/local/bin:/usr/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
@@ -49,3 +49,4 @@ PATH=/usr/local/bin:/usr/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:
 PATH=/usr/local/bin:/usr/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
 PATH=/usr/local/bin:/usr/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
 PATH=/usr/local/bin:/usr/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
+PATH=/usr/local/bin:/usr/local/bin:/usr/local/bin:/usr/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
