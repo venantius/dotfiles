@@ -1,4 +1,5 @@
 " Venantius' .vimrc
+"TODO: There are other configurables for our .vimrc that we might care about; I think pushing "-O" into our .bashrc is the type of thing we might want, which would necessitate defining either 'winheight' or 'winwidth' in our .vimrc
 
 autocmd!
 execute pathogen#infect()
