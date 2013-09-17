@@ -1,0 +1,19 @@
+# ignore any other dotfiles or dotfolders
+.*
+
+# Ignore major OS X folders
+Applications
+Desktop
+Documents
+Downloads
+Dropbox
+*Drive
+Library
+META-INF
+Movies
+Music
+PGDATA
+Pictures
+R
+VirtualBox*
+

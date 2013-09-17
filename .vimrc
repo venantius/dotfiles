@@ -3,11 +3,13 @@
 
 autocmd!
 execute pathogen#infect()
+execute pathogen#helptags()
 """""""""""""""""""""""""""
 " CORE EDITING SETTINGS
 """""""""""""""""""""""""""
 
 set nocompatible
+set smarttab
 set expandtab
 set tabstop=4
 set shiftwidth=4
@@ -15,6 +17,7 @@ set softtabstop=4
 set autoindent
 set laststatus=2
 set backspace=indent,eol,start
+set number
 
 " Added from Gary Bernhart's .vimrc
 " May not keep these indefinitely
@@ -42,7 +45,13 @@ syntax on
 filetype plugin on
 filetype indent on
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Powerline
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Code folding
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -57,6 +66,8 @@ colorscheme solarized
 " Go
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 au Filetype go noexpandtab
+au BufWritePre *.go :silent Fmt
+set rtp+=/misc/vim
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Python
