@@ -63,6 +63,34 @@ set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
 set background=dark
 colorscheme solarized
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" PLUGINS
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-airline
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:airline_powerline_fonts = 1
+
+" Commented lines are the defaults
+function! AirlineInit()
+    " let g:airline_section_a = '%{airline#util#wrap(airline#parts#mode(),0)}%{airline#util#append(airline#parts#paste(),0)}%{airline#util#append(airline#parts#iminsert(),0)}'
+    " let g:airline_section_a = airline#section#create(['mode', ' ', 'branch'])"
+    let g:airline_section_b = airline#section#create(['branch'])
+    " let g:airline_section_b = ''
+    let g:airline_section_c = '%<%t%m'
+" let g:airline_section_gutter = '%#airline_file#%{airline#util#wrap(airline#parts#readonly(),0)}%='
+    let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#syntastic#get_warnings(),0)}'
+" let g:airline_section_x = '%{airline#util#wrap(airline#parts#filetype(),0)}'
+" let g:airline_section_y = '%{airline#util#wrap(airline#parts#ffenc(),0)}'
+" let g:airline_section_z = '%3p%% %{g:airline_symbols.linenr} %3l:%3c'
+endfunction
+autocmd VimEnter * call AirlineInit()
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" LANGUAGES
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Go
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -73,7 +101,7 @@ au BufWritePre *.go :silent Fmt
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Python
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" au Filetype python 
+" au Filetype python
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Ruby
