@@ -1,14 +1,4 @@
 ###############################################################################
-# p4 configuration 
-###############################################################################
-
-export P4USER=david.jarvis
-export P4CLIENT=davidjarvis_laptop
-#export P4CONFIG=/Users/davidjarvis/.p4config
-export P4EDITOR=vim
-export GNUTERM='x11'
-
-###############################################################################
 # virtualenvwrapper
 ###############################################################################
 
@@ -44,9 +34,27 @@ alias pypy_pip="/usr/local/share/pypy/pip"
 ###############################################################################
 # Prompt
 ###############################################################################
-# export PS1="\e[0;32m[\u@\h \W]\$ \e[m"
-# export PS1="$(if [[ ${EUID} == 0 ]]; then echo '\[\033[01;31m\]\h\[\033[01;34m\] \W'; else echo '\[\033[01;32m\]\u@\h\[\033[01;34m\] \w'; fi) \$([[ \$? != 0 ]] && echo \"\[\033[01;31m\]:(\[\033[01;34m\] \")\$\[\033[00m\] "
-PS1='\[\e[1;37m\][\u@\h \W] \t $\[\e[0m\] '
+# I've already spent way too much time editing this, heh.
+PS1='[\[\e[0;36m\]\u@\h:\[\e[0m\]\[\e[0;33m\]\W\[\e[0m\]] \t $\[\e[m\] '
+export PS1=$PS1
+
+# Just nice to know what colors look like on this platform/color scheme :)
+function color_list() {
+    echo -e "\x1B[31m[Red]\x1B[0m"
+    echo -e "\x1B[32m[Green]\x1B[0m"
+    echo -e "\x1B[33m[Yellow]\x1B[0m"
+    echo -e "\x1B[34m[Blue]\x1B[0m"
+    echo -e "\x1B[35m[Magenta]\x1B[0m"
+    echo -e "\x1B[36m[Cyan]\x1B[0m"
+    echo -e "\x1B[37m[Light Grey]\x1B[0m"
+    echo -e "\x1B[90m[Dark Grey]\x1B[0m"
+    echo -e "\x1B[91m[Light Red]\x1B[0m"
+    echo -e "\x1B[92m[Light Green]\x1B[0m"
+    echo -e "\x1B[93m[Light Yellow]\x1B[0m"
+    echo -e "\x1B[94m[Light Blue]\x1B[0m"
+    echo -e "\x1B[95m[Light Magenta]\x1B[0m"
+}
+export TERM=xterm-256color
 
 ###############################################################################
 # Auto-completion script #
@@ -67,7 +75,7 @@ alias v1db="psql -h sumdb1-1-prod-sjc.agkn.net -U jarvis -p 5433 akdb -w"
 alias v2db="psql -h reportingdb_v2.agkn.net -U support_user -p 5000 akdb -w"
 alias qadb="psql -h sumdb1-1-qa-sjc.agkn.net -p 5433 -U jarvis akdb -w"
 
-alias emr="ruby ~/elastic-mapreduce-cli/elastic-mapreduce"
+alias emr="/usr/bin/ruby ~/elastic-mapreduce-cli/elastic-mapreduce"
 alias ll="ls -l"
 alias getwd='pwd | tr -d "\r\n" | pbcopy'
 alias mta_report="~/perforce/science/tools/mta/mta-reportgen/bin/mta_report --dbconfig ~/perforce/science/tools/mta-reportgen/jarvis_dbconfig.cfg"

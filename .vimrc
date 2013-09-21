@@ -9,12 +9,13 @@ execute pathogen#helptags()
 """""""""""""""""""""""""""
 
 set nocompatible
-set smarttab
+" set smarttab
 set expandtab
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set autoindent
+set smartindent
 set laststatus=2
 set backspace=indent,eol,start
 set number
@@ -67,7 +68,7 @@ colorscheme solarized
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 au Filetype go noexpandtab
 au BufWritePre *.go :silent Fmt
-set rtp+=/misc/vim
+" set rtp+=/misc/vim
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Python
