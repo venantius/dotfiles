@@ -15,7 +15,7 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set autoindent
-set smartindent
+set cindent " replaceing smartindent because of some weird stuff with # symbols
 set laststatus=2
 set backspace=indent,eol,start
 set number
@@ -30,7 +30,6 @@ set ignorecase smartcase
 set cursorline
 set cmdheight=1
 set switchbuf=useopen
-set showtabline=2
 set winwidth=79
 " Suspect, but GB claims necessary for RVM
 set shell=bash
@@ -40,6 +39,7 @@ set showcmd
 
 " I like this a lot
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+" set nobackup
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 
 syntax on
@@ -71,21 +71,12 @@ colorscheme solarized
 " vim-airline
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:airline_powerline_fonts = 1
-
-" Commented lines are the defaults
 function! AirlineInit()
-    " let g:airline_section_a = '%{airline#util#wrap(airline#parts#mode(),0)}%{airline#util#append(airline#parts#paste(),0)}%{airline#util#append(airline#parts#iminsert(),0)}'
-    " let g:airline_section_a = airline#section#create(['mode', ' ', 'branch'])"
     let g:airline_section_b = airline#section#create(['branch'])
-    " let g:airline_section_b = ''
     let g:airline_section_c = '%<%t%m'
-" let g:airline_section_gutter = '%#airline_file#%{airline#util#wrap(airline#parts#readonly(),0)}%='
-    let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#syntastic#get_warnings(),0)}'
-" let g:airline_section_x = '%{airline#util#wrap(airline#parts#filetype(),0)}'
-" let g:airline_section_y = '%{airline#util#wrap(airline#parts#ffenc(),0)}'
-" let g:airline_section_z = '%3p%% %{g:airline_symbols.linenr} %3l:%3c'
+    let g:airline_section_warning = airline#section#create(['syntastic'])
 endfunction
-autocmd VimEnter * call AirlineInit()
+autocmd VimEnter * if exists(':AirlineToggle') | call AirlineInit()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " LANGUAGES
