@@ -56,15 +56,14 @@ export LANG=en_US.UTF-8
 ###############################################################################
 # GOPATH exports go here
 ###############################################################################
-export GOPATH=/Users/jarvis/go
+export GOPATH=/Users/$USER/go
 export PATH=$PATH:$GOPATH/bin
 
 ###############################################################################
 # PYTHONPATH exports go here
 ###############################################################################
-export PYTHONPATH=$PYTHONPATH:/Users/jarvis/Downloads/swampy-2.0
-export PYTHONPATH=$PYTHONPATH:/Users/jarvis/Documents
-export PYTHONPATH=$PYTHONPATH:/Users/jarvis/perforce
+export PYTHONPATH=$PYTHONPATH:/Users/$USER/Documents
+export PYTHONPATH=$PYTHONPATH:/Users/$USER/perforce
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
@@ -74,5 +73,5 @@ export PATH=/usr/local/sbin:$PATH
 export PATH=/usr/local/Cellar:$PATH
 ###############################################################################
 
-# I'm lazy and want to boot into ak-sci-env right at terminal start
+# I'm lazy and want to boot into my core virtualenv right at terminal start
 workon core-dev
