@@ -4,6 +4,7 @@
 autocmd!
 execute pathogen#infect()
 execute pathogen#helptags()
+
 """""""""""""""""""""""""""
 " CORE EDITING SETTINGS
 """""""""""""""""""""""""""
@@ -79,8 +80,42 @@ endfunction
 autocmd VimEnter * if exists(':AirlineToggle') | call AirlineInit()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" NERDtree
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+map <C-n> :NERDTreeToggle<CR>
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " LANGUAGES
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+au Filetype html setlocal sw=2 ts=2 sts=2
+au Filetype less setlocal sw=2 ts=2 sts=2
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Clojure
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+au Filetype clojure nmap <c-c><c-k> :Require<cr>
+au Filetype clojure let g:clojure_fuzzy_indent = 1
+au Filetype clojure let g:clojure_fuzzy_indent_patterns = ['^with', '^def', '^let']
+au BufNewFile,BufRead *.edn set filetype=clojure
+au Filetype clojure autocmd BufWritePre * :%s/\s\+$//e
+
+" DLowe's test function
+function! TestToplevel() abort
+    "Eval the toplevel clojure form (a deftest) and then test-var the
+    "result."
+    normal! ^
+    let line1 = searchpair('(','',')', 'bcrn', g:fireplace#skip)
+    let line2 = searchpair('(','',')', 'rn', g:fireplace#skip)
+    let expr = join(getline(line1, line2), "\n")
+    let var = fireplace#session_eval(expr)
+    let result = fireplace#echo_session_eval("(clojure.test/test-var " . var . ")")
+    return result
+endfunction
+au Filetype clojure nmap <c-c><c-t> :call TestToplevel()<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Go
@@ -93,6 +128,11 @@ au BufWritePre *.go :silent Fmt
 " Python
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " au Filetype python
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" JavaScript
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Ruby

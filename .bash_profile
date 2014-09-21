@@ -1,3 +1,5 @@
+export PATH=/usr/local/bin:$PATH
+
 ###############################################################################
 # virtualenvwrapper
 ###############################################################################
@@ -47,6 +49,8 @@ export TERM=xterm-256color
 alias ls="ls -G"
 alias ll="ls -l"
 alias getwd='pwd | tr -d "\r\n" | pbcopy'
+alias supergrep="grep --color -n -C 2 -r"
+
 
 ###############################################################################
 # Exports go here 
@@ -64,6 +68,7 @@ export PATH=$PATH:$GOPATH/bin
 ###############################################################################
 export PYTHONPATH=$PYTHONPATH:/Users/$USER/Documents
 export PYTHONPATH=$PYTHONPATH:/Users/$USER/perforce
+export PYTHONDONTWRITEBYTECODE=TRUE
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
@@ -74,4 +79,11 @@ export PATH=/usr/local/Cellar:$PATH
 ###############################################################################
 
 # I'm lazy and want to boot into my core virtualenv right at terminal start
-workon core-dev
+workon st
+
+# source st-particular stuff
+source ~/.st_profile
+source ~/Code/devtools/bash_profile
+if [ -f ~/.git-completion.bash ]; then
+    . ~/.git-completion.bash
+fi
