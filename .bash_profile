@@ -87,3 +87,5 @@ source ~/Code/devtools/bash_profile
 if [ -f ~/.git-completion.bash ]; then
     . ~/.git-completion.bash
 fi
+
+source ~/.ursa_profile
