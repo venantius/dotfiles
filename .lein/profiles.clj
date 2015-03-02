@@ -3,7 +3,7 @@
                   [lein-pprint "1.1.2"]
                   [lein-cljfmt "0.1.10"]
                   [jonase/eastwood "0.2.1"]
-                  [venantius/ultra "0.2.1"]]
+                  [venantius/ultra "0.3.0"]]
         :dependencies [[cljfmt "0.1.10"]
                        [jonase/eastwood "0.2.1" :exclusions  [org.clojure/clojure]]]
         :ultra {:color-scheme :solarized_dark}
