@@ -14,3 +14,4 @@
                 :stacktraces false}
 
         :eastwood {:exclude-linters [:constant-test :suspicious-expression :local-shadows-var]}}}
+
