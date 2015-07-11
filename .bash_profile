@@ -78,14 +78,8 @@ export PATH=/usr/local/sbin:$PATH
 export PATH=/usr/local/Cellar:$PATH
 ###############################################################################
 
-# I'm lazy and want to boot into my core virtualenv right at terminal start
-workon st
+source ~/.ursarc
 
-# source st-particular stuff
-source ~/.st_profile
-source ~/Code/devtools/bash_profile
 if [ -f ~/.git-completion.bash ]; then
     . ~/.git-completion.bash
 fi
-
-source ~/.ursa_profile
