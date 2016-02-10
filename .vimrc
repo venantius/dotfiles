@@ -23,12 +23,13 @@ let g:limelight_default_coefficient = 0.7
  " Number of preceding/following paragraphs to include (default: 0)
 let g:limelight_paragraph_span = 1
 
-
+set wildmenu
+set wildmode=list:longest
 set nocompatible
 set expandtab
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
 set autoindent
 set cindent " replaceing smartindent because of some weird stuff with # symbols
 set laststatus=2
@@ -49,8 +50,11 @@ set showcmd
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 syntax on
-filetype plugin on
-filetype indent on
+filetype indent plugin on
+
+let mapleader=','
+set pastetoggle=<Leader>t
+map <Leader>d <C-]>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -64,6 +68,9 @@ colorscheme solarized
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " PLUGINS
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" vim-markdown
+let g:vim_markdown_folding_disabled=1
 
 
 " NERDtree
@@ -93,6 +100,9 @@ autocmd VimEnter * if exists(':AirlineToggle') | call AirlineInit()
 let g:clj_fmt_autosave = 1
 
 
+" vim-fugitive
+let g:fugitive_github_domains = ['github.com', 'git.airbnb.com']
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " LANGUAGES
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -120,11 +130,41 @@ function! TestToplevel() abort
 endfunction
 au Filetype clojure nmap <c-c><c-t> :call TestToplevel()<cr>
 
-
 " Go
-au Filetype go noexpandtab
-au BufWritePre *.go :silent Fmt
+au FileType go set noexpandtab softtabstop=4 tabstop=4 shiftwidth=4
+
+" HTML
+au Filetype html set tabstop=2 shiftwidth=2
 
 
 " YAML
 au Filetype yaml set tabstop=2 shiftwidth=2
+
+" Ruby
+au Filetype ruby set tabstop=2 shiftwidth=2
+au Filetype eruby set tabstop=2 shiftwidth=2
+au Filetype ruby autocmd BufWritePre * :%s/\s\+$//e
+
+
+" highlight trailing whitespace
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
+
+" Set your lines to 100 characters long for Ruby files: (make the 101 column all red)
+au Filetype ruby set textwidth=100
+au Filetype ruby let w:m2=matchadd('ErrorMsg', '\%>100v.\+', -1)
+
+set textwidth=80
+set colorcolumn=81
+au BufEnter * set colorcolumn=81
+
+set encoding=utf-8
+
+" Faster ctrlP search
+let g:ctrlp_lazy_update = 100 "Only refreshes the results every 100ms so if you type fast searches don't pile up
+let g:ctrlp_user_command = 'find %s -type f | egrep -iv "(\.(eot|gif|gz|ico|jpg|jpeg|otf|png|psd|pyc|svg|ttf|woff|zip)$)|(/\.)|((^|\/)tmp\/)"' "Quicker indexing
+
