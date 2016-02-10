@@ -1,26 +1,11 @@
+###############################################################################
+# general shell
+###############################################################################
+
 export PATH=/usr/local/bin:$PATH
+export PATH=/usr/local/sbin:$PATH
+export PATH=/usr/local/Cellar:$PATH
 
-###############################################################################
-# virtualenvwrapper
-###############################################################################
-export WORKON_HOME=$HOME/.virtualenvs
-export PROJECT_HOME=$HOME/Devel
-source /usr/local/bin/virtualenvwrapper.sh
-
-###############################################################################
-# postgres settings
-###############################################################################
-export PGDATA=/usr/local/pgsql/data
-
-###############################################################################
-# PyPy
-###############################################################################
-alias pypy_easy_install="/usr/local/share/pypy/easy_install"
-alias pypy_pip="/usr/local/share/pypy/pip"
-
-###############################################################################
-# Prompt
-###############################################################################
 # I've already spent way too much time editing this, heh.
 PS1='[\[\e[0;95m\]\u\[\e[0;36m\]@\h:\[\e[0m\]\[\e[0;33m\]\W\[\e[0m\]] \t $\[\e[m\] '
 export PS1=$PS1
@@ -41,44 +26,61 @@ function color_list() {
     echo -e "\x1B[94m[Light Blue]\x1B[0m"
     echo -e "\x1B[95m[Light Magenta]\x1B[0m"
 }
+export LANG=en_US.UTF-8
 export TERM=xterm-256color
 
-###############################################################################
-# Aliases go here #
-###############################################################################
+# aliases
+alias less='less -R' # syntax highlight
+alias ll='ls -AgGhl'
 alias ls="ls -G"
-alias ll="ls -l"
 alias getwd='pwd | tr -d "\r\n" | pbcopy'
 alias supergrep="grep --color -n -C 2 -r"
 
+###############################################################################
+# development environment
+###############################################################################
 
-###############################################################################
-# Exports go here 
-###############################################################################
-export LANG=en_US.UTF-8
+# clojure
+lein() {
+    if [[ $1 == "figwheel" ]]; then
+        command rlwrap lein figwheel
+    else
+        command lein "$@"
+    fi
+}
 
-###############################################################################
-# GOPATH exports go here
-###############################################################################
-export GOPATH=/Users/$USER/go
+# git
+alias gco='git checkout'
+
+# golang
+export GOPATH=/Users/$USER/Code/go
+export GO15VENDOREXPERIMENT=1
 export PATH=$PATH:$GOPATH/bin
 
-###############################################################################
-# PYTHONPATH exports go here
-###############################################################################
+# postgres
+export PGDATA=/usr/local/pgsql/data
+
+# python
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/Devel
+source /usr/local/bin/virtualenvwrapper.sh
+alias pypy_easy_install="/usr/local/share/pypy/easy_install"
+alias pypy_pip="/usr/local/share/pypy/pip"
 export PYTHONPATH=$PYTHONPATH:/Users/$USER/Documents
-export PYTHONPATH=$PYTHONPATH:/Users/$USER/perforce
 export PYTHONDONTWRITEBYTECODE=TRUE
 
+# ruby
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 ###############################################################################
-export PATH=/usr/local/bin:$PATH
-export PATH=/usr/local/sbin:$PATH
-export PATH=/usr/local/Cellar:$PATH
+# contextual
 ###############################################################################
 
 source ~/.ursarc
+
+if [ -f ~/.work.sh ]; then
+    . ~/.work.sh
+fi
 
 if [ -f ~/.git-completion.bash ]; then
     . ~/.git-completion.bash
