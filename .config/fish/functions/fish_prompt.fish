@@ -1,4 +1,4 @@
-source ~/.config/fish/colors/solarized.fish
+# source ~/.config/fish/colors/solarized.fish
 
 function prompt_git_status --description 'Write out the git status'
   ## early exit for Chromium & Blink repo, as the dirty check takes ~5s
