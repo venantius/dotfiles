@@ -19,20 +19,16 @@ function fish_prompt --description 'Write out the prompt'
 
   echo "" # blank line
 
-  # get current values
-  set cur_user (whoami)
-  set cur_host (hostname -s)
+  # get current wd
   set cur_cwd (echo $PWD | sed -e "s|^$HOME|~|" -e 's|^/private||')
 
-  echo -n '['
   set_color $violet;          echo -n (whoami)
   set_color normal;           echo -n '@'
-  set_color $cyan;          echo -n (hostname -s)
+  set_color $cyan;            echo -n (hostname -s)
   set_color normal;           echo -n ':'
-  set_color $yellow;            echo -n $cur_cwd
-  set_color normal;       echo -n ']'
+  set_color $yellow;          echo -n $cur_cwd
 
-  set_color normal;                prompt_git_status
+  set_color normal;           prompt_git_status
 
   echo ""
   echo -n '▸ '
