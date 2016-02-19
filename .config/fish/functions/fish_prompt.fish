@@ -1,5 +1,3 @@
-# source ~/.config/fish/colors/solarized.fish
-
 function prompt_git_status --description 'Write out the git status'
   ## early exit for Chromium & Blink repo, as the dirty check takes ~5s
   set -l repo_info (command git rev-parse --git-dir --is-inside-git-dir --is-bare-repository --is-inside-work-tree --short HEAD ^/dev/null)
