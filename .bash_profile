@@ -27,7 +27,6 @@ function color_list() {
     echo -e "\x1B[95m[Light Magenta]\x1B[0m"
 }
 export LANG=en_US.UTF-8
-export TERM=xterm-256color
 
 # aliases
 alias less='less -R' # syntax highlight
@@ -63,7 +62,9 @@ export PGDATA=/usr/local/pgsql/data
 # python
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/Devel
-source /usr/local/bin/virtualenvwrapper.sh
+if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
+    source /usr/local/bin/virtualenvwrapper.sh
+fi
 alias pypy_easy_install="/usr/local/share/pypy/easy_install"
 alias pypy_pip="/usr/local/share/pypy/pip"
 export PYTHONPATH=$PYTHONPATH:/Users/$USER/Documents
@@ -75,8 +76,6 @@ export PYTHONDONTWRITEBYTECODE=TRUE
 ###############################################################################
 # contextual
 ###############################################################################
-
-source ~/.ursarc
 
 if [ -f ~/.work.sh ]; then
     . ~/.work.sh

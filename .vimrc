@@ -49,7 +49,8 @@ set scrolloff=3
 set showcmd
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
-syntax on
+
+syntax enable
 filetype indent plugin on
 
 let mapleader=','
@@ -61,9 +62,10 @@ map <Leader>d <C-]>
 " Colorscheme
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+" set t_Co=256
 set background=dark
 colorscheme solarized
-
+highlight Comment cterm=italic
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " PLUGINS
