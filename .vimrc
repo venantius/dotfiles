@@ -62,6 +62,11 @@ let mapleader=','
 set pastetoggle=<Leader>t
 map <Leader>d <C-]>
 
+" Force yourself to not use arrow keys
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Colorscheme
