@@ -43,6 +43,11 @@ set ignorecase smartcase
 set cursorline
 set cmdheight=1
 set switchbuf=useopen
+set wrap
+set linebreak
+set nolist
+set textwidth=0
+set wrapmargin=0
 set winwidth=79
 set shell=bash
 set scrolloff=3
@@ -63,8 +68,9 @@ map <Leader>d <C-]>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " set t_Co=256
-set background=dark
 colorscheme solarized
+set background=dark
+
 highlight Comment cterm=italic
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -112,6 +118,10 @@ let g:fugitive_github_domains = ['github.com', 'git.airbnb.com']
 au Filetype html setlocal sw=2 ts=2 sts=2
 au Filetype less setlocal sw=2 ts=2 sts=2
 
+" MIT Scheme (+slimv)
+au Filetype scheme set textwidth=80
+let g:slimv_swank_cmd = '! tmux new-session -d -n swank-mit-scheme "scheme --load ~/.vim/bundle/slimv/slime/contrib/swank-mit-scheme.scm"'
+" let g:swank_log=1
 
 " Clojure
 au Filetype clojure nmap <c-c><c-k> :Require<cr>
@@ -160,7 +170,6 @@ autocmd BufWinLeave * call clearmatches()
 au Filetype ruby set textwidth=100
 au Filetype ruby let w:m2=matchadd('ErrorMsg', '\%>100v.\+', -1)
 
-set textwidth=80
 set colorcolumn=81
 au BufEnter * set colorcolumn=81
 
