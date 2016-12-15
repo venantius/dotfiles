@@ -6,6 +6,27 @@ execute pathogen#helptags()
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Vundle
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" set nocompatible
+
+" set rtp+=~/.vim/bundle/Vundle.vim
+" call vundle#begin()
+
+" Obviously let Vundle handle itself.
+" Plugin 'VundleVim/Vundle.vim'
+
+" Plugin 'junegunn/goyo.vim'
+" Plugin 'tpope/vim-fireplace'
+
+
+" call vundle#end()
+filetype off
+filetype plugin indent on
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CORE EDITING SETTINGS
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -123,7 +144,7 @@ au Filetype clojure nmap <c-c><c-k> :Require<cr>
 au Filetype clojure let g:clojure_fuzzy_indent = 1
 au Filetype clojure let g:clojure_fuzzy_indent_patterns = ['^with', '^def', '^let']
 au BufNewFile,BufRead *.edn set filetype=clojure
-au Filetype clojure autocmd BufWritePre * :%s/\s\+$//e
+" au Filetype clojure autocmd BufWritePre * :%s/\s\+$//e
 function! TestToplevel() abort
     "Eval the toplevel clojure form (a deftest) and then test-var the
     "result."

@@ -1,3 +1,3 @@
 function fish_greeting
-  echo "Into the forest..."
+  echo "私は森に戻って..."
 end
