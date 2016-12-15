@@ -22,7 +22,6 @@ function fish_agent
   end
   set -eg SSH_AUTH_SOCK $SSH_AUTH_SOCK 2> /dev/null
   set -eU SSH_AUTH_SOCK $SSH_AUTH_SOCK 2> /dev/null
-  set -xU SSH_AGENT_PID $SSH_AGENT_PID 2> /dev/null
   set -xU SSH_AUTH_SOCK $SSH_AUTH_SOCK 2> /dev/null
   set -xg SSH_AUTH_SOCK $SSH_AUTH_SOCK 2> /dev/null
 end
