@@ -22,8 +22,6 @@ execute pathogen#helptags()
 
 
 " call vundle#end()
-filetype off
-filetype plugin indent on
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -190,7 +188,6 @@ match ExtraWhitespace /\s\+$/
 autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-autocmd BufWinLeave * call clearmatches()
 
 " Set your lines to 100 characters long for Ruby files: (make the 101 column all red)
 au Filetype ruby set textwidth=100
