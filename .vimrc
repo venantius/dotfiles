@@ -166,8 +166,10 @@ function! TestToplevel() abort
 endfunction
 au Filetype clojure nmap <c-c><c-t> :call TestToplevel()<cr>
 
+
 " Go
 au FileType go set noexpandtab softtabstop=4 tabstop=4 shiftwidth=4
+
 
 " HTML
 au Filetype html set tabstop=2 shiftwidth=2
@@ -176,11 +178,25 @@ au Filetype html set tabstop=2 shiftwidth=2
 " YAML
 au Filetype yaml set tabstop=2 shiftwidth=2
 
+
 " Ruby
 au Filetype ruby set tabstop=2 shiftwidth=2
 au Filetype eruby set tabstop=2 shiftwidth=2
 au Filetype ruby autocmd BufWritePre * :%s/\s\+$//e
 
+
+" Rust
+set hidden
+let g:racer_cmd = "/Users/ursa/.cargo/bin/racer"
+let $RUST_SRC_PATH="/Users/ursa/Code/school/the_rust_programming_language/projects/guessing_game/src"
+let g:racer_experimental_completer = 1
+let g:rustfmt_autosave = 1
+let g:rustfmt_fail_silently = 1
+au BufWinEnter *.rs set mps-=<:>
+
+
+" SQL
+let g:sql_type_default = 'pgsql' " I use Postgres a lot
 
 " highlight trailing whitespace
 highlight ExtraWhitespace ctermbg=red guibg=red

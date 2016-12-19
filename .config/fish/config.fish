@@ -19,6 +19,8 @@ command --search $rvm >/dev/null; and begin
   rvm default
 end
 
+set -x PATH $PATH /Users/ursa/.cargo/bin
+
 if not begin
     # Is the agent running already? Does the agent-info file exist, and if so,
     # is there a process with the pid given in the file?
