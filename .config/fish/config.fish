@@ -14,7 +14,10 @@ set -x PATH /Users/william_jarvis/airlab-beta/repos/sysops/one_offs $PATH
 set -x PATH /Users/william_jarvis/.rvm $PATH
 set -x JAVA_HOME (/usr/libexec/java_home)
 set -x JAVA8_HOME (/usr/libexec/java_home)
-rvm default
+
+command --search $rvm >/dev/null; and begin
+  rvm default
+end
 
 if not begin
     # Is the agent running already? Does the agent-info file exist, and if so,
