@@ -1,10 +1,5 @@
 " Venantius' .vimrc
 
-autocmd!
-execute pathogen#infect()
-execute pathogen#helptags()
-
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vundle
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -12,25 +7,26 @@ execute pathogen#helptags()
 set nocompatible
 filetype off
 
-" set rtp+=~/.vim/bundle/Vundle.vim
-" call vundle#begin()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-" Plugin 'VundleVim/Vundle.vim'
+Plugin 'VundleVim/Vundle.vim'
 
-" Plugin 'cespare/vim-toml'
-" Plugin 'exu/pgsql.vim'
-" Plugin 'godlygeek/tabular'
-" Plugin 'junegunn/goyo.vim'
-" Plugin 'junegunn/limelight.vim'
-" Plugin 'plasticboy/vim-markdown'
-" Plugin 'tpope/vim-fireplace'
-" Plugin 'tpope/vim-surround'
-" Plugin 'vim-airline/vim-airline'
-" Plugin 'vim-airline/vim-airline-themes'
-" Plugin 'vimwiki/vimwiki.vim'
-" Plugin 'VundleVim/Vundle.vim'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'cespare/vim-toml'
+Plugin 'exu/pgsql.vim'
+Plugin 'godlygeek/tabular'
+Plugin 'junegunn/goyo.vim'
+Plugin 'junegunn/limelight.vim'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'tpope/vim-fireplace'
+Plugin 'tpope/vim-surround'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'vimwiki/vimwiki'
 
-" call vundle#end()
+call vundle#end()
+filetype plugin indent on
 
 set compatible
 
