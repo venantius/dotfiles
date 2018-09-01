@@ -13,17 +13,27 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'alx741/vim-hindent'
 Plugin 'cespare/vim-toml'
+Plugin 'dag/vim-fish'
+Plugin 'eagletmt/ghcmod-vim'
+Plugin 'eagletmt/neco-ghc'
 Plugin 'exu/pgsql.vim'
 Plugin 'godlygeek/tabular'
+Plugin 'itchyny/vim-haskell-indent'
 Plugin 'junegunn/goyo.vim'
 Plugin 'junegunn/limelight.vim'
 Plugin 'plasticboy/vim-markdown'
+Plugin 'scrooloose/nerdtree'
+Plugin 'Shougo/vimproc.vim'
 Plugin 'tpope/vim-fireplace'
 Plugin 'tpope/vim-surround'
+Plugin 'venantius/vim-cljfmt'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'vim-scripts/paredit.vim'
 Plugin 'vimwiki/vimwiki'
+Plugin 'zah/nim.vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -74,12 +84,6 @@ let mapleader=','
 set pastetoggle=<Leader>t
 map <Leader>d <C-]>
 
-" Force yourself to not use arrow keys
-noremap <Up> <NOP>
-noremap <Down> <NOP>
-noremap <Left> <NOP>
-noremap <Right> <NOP>
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Colorscheme
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -110,6 +114,9 @@ let g:limelight_default_coefficient = 0.7
  " Number of preceding/following paragraphs to include (default: 0)
 let g:limelight_paragraph_span = 1
 
+" vim-ghcmod
+let g:ghcmod_stack_exec = 1
+
 
 
 " vim-markdown
@@ -122,20 +129,11 @@ let g:vimwiki_list = [{'path': '~/Code/wiki'}]
 
 " NERDtree
 map <C-n> :NERDTreeToggle<CR>
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-
-
-" syntastic
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
-" let g:syntastic_python_checkers = ['pep8']
-" let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
 
 
 " vim-airline
 let g:airline#extensions#whitespace#enabled=0
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 0
 function! AirlineInit()
     let g:airline_section_b = airline#section#create(['branch'])
     let g:airline_section_c = '%<%t%m'
@@ -148,19 +146,11 @@ let g:clj_fmt_autosave = 1
 
 
 " vim-fugitive
-let g:fugitive_github_domains = ['github.com', 'git.airbnb.com']
+let g:fugitive_github_domains = ['github.com']
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " LANGUAGES
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-au Filetype html setlocal sw=2 ts=2 sts=2
-au Filetype less setlocal sw=2 ts=2 sts=2
-
-" MIT Scheme (+slimv)
-au Filetype scheme set textwidth=80
-let g:slimv_swank_cmd = '! tmux new-session -d -n swank-mit-scheme "scheme --load ~/.vim/bundle/slimv/slime/contrib/swank-mit-scheme.scm"'
-" let g:swank_log=1
 
 " Clojure
 au Filetype clojure nmap <c-c><c-k> :Require<cr>
@@ -180,6 +170,13 @@ function! TestToplevel() abort
     return result
 endfunction
 au Filetype clojure nmap <c-c><c-t> :call TestToplevel()<cr>
+
+" Haskell
+au FileType haskell set tabstop=4 softtabstop=4 shiftwidth=4
+
+let g:necoghc_use_stack = 1
+let g:haskellmode_completion_ghc = 0
+autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 
 
 " JavaScript / JSX / React
